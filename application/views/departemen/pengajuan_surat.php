@@ -1,0 +1,133 @@
+<div class="">
+    <div class="clearfix"></div>
+    <form method="post" enctype="multipart/form-data" action="<?= base_url("departemen/insert_pengajuan") ?>">
+
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Form <small>Alamat Surat</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <!-- start form for validation -->
+                        <label>From * :</label>
+                        <textarea type="text" class="form-control" rows="2" name="from" required></textarea>
+                        <br>
+                        <label>To * :</label>
+                        <textarea type="text" class="form-control" rows="2" name="to" required></textarea>
+                        <!-- end form for validations -->
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Form <small>Lampiran dan catatan</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div>
+                            <label>Lampiran Surat :</label><br>
+                            <input type="file" name="file"><br>
+                            <label style="color:red; font-size:12px;">maks 10mb</label>
+                        </div><br>
+                        <div>
+                            <label>Catatan Operator :</label>
+                            <textarea type="text" class="form-control" rows="5" name="catatan"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Judul <small>Surat *</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div>
+                        <textarea type="text" class="form-control" rows="2" name="judul" required="required"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Isi <small>Surat *</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="alerts"></div>
+                    <div>
+                        <textarea type="text" class="form-control" rows="5" name="isi" id="isi"></textarea>
+                    </div>
+                    <br />
+
+                    <div class="ln_solid"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="text-center">
+            <button type="submit" name="status" class="btn btn-info" value="draft">
+                Simpan Draft
+            </button>
+            <button type="submit" name="status" value="0"
+                onclick="return confirm('Apakah Anda yakin dengan pilihan Anda?');" class="btn btn-success">
+                Simpan & Ajukan Draft
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+<!-- bootstrap-ckeditor -->
+<script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+
+<script>
+    var editor = document.querySelector('[id="isi"]');
+    ClassicEditor.create(editor).then(editor => {
+            editor.editing.view.change(writer => {
+                writer.setStyle('height', '300px', editor.editing.view.document.getRoot());
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
